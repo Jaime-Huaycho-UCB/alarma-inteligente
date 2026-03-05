@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { Lightbulb, Cpu, Shield, Smartphone } from "lucide-react";
+import imagenLluviaIdeas from '../assets/lluvia-ideas.jpg';
 
 export const LluviaIdeas = () => {
-    const imagenLluviaIdeas = "src/assets/lluvia-ideas.jpg";
-
     const ideasRapidas = [
         "Celular",
         "Casa",

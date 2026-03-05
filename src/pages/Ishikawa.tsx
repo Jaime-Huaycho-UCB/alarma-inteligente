@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import { Cpu, ShieldAlert, Network, MonitorSmartphone } from "lucide-react";
+import diagramaIshikawa from '../assets/ishikawa.jpeg';
 
 export const Ishikawa = () => {
-    const diagramaIshikawa = "src/assets/ishikawa.jpeg";
-
     const categorias = [
         {
             titulo: "Arquitectura de Software",
