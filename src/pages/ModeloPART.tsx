@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Cpu, Users, Boxes, Wifi, Workflow } from "lucide-react";
+import { Cpu, Users, Boxes, Workflow } from "lucide-react";
 
 export const ModeloPART = () => {
     return (

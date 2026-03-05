@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { ShieldAlert, Lock, Camera, AlertTriangle } from "lucide-react";
 
 export const DefinicionProblema = () => {
     const causas = [
