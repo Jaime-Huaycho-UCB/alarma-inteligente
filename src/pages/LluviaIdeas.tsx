@@ -5,9 +5,7 @@ import {
     Shield,
     Smartphone,
     Wifi,
-    Eye,
-    Volume2,
-    Lock,
+    Eye
 } from "lucide-react";
 import { useState } from "react";
 import imagenLluviaIdeas from "../assets/lluvia-ideas.jpg";
