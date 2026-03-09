@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useRef, useState, useEffect } from "react";
 
 // ─── Animated counter hook ───────────────────────────────────────────────────
-function useCounter(target, duration = 2000) {
+function useCounter(target: any, duration = 2000): [number, (value: boolean) => void] {
     const [count, setCount] = useState(0);
     const [started, setStarted] = useState(false);
     useEffect(() => {
@@ -23,7 +23,7 @@ function useCounter(target, duration = 2000) {
 }
 
 // ─── Stat card with counter ───────────────────────────────────────────────────
-function StatCard({ value, label, suffix = "" }) {
+function StatCard({ value, label, suffix = "" }: { value: number; label: string; suffix?: string }) {
     const ref = useRef(null);
     const [count, setStarted] = useCounter(value);
     useEffect(() => {
@@ -66,7 +66,7 @@ function StatCard({ value, label, suffix = "" }) {
 }
 
 // ─── Timeline step ────────────────────────────────────────────────────────────
-function TimelineStep({ num, title, desc, delay }) {
+function TimelineStep({ num, title, desc, delay }: { num: string; title: string; desc: string; delay: number }) {
     return (
         <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -118,7 +118,7 @@ function TimelineStep({ num, title, desc, delay }) {
 }
 
 // ─── Sensor card ─────────────────────────────────────────────────────────────
-function SensorCard({ img, title, desc, specs, delay }) {
+function SensorCard({ img, title, desc, specs, delay }: { img: string; title: string; desc: string; specs: string[]; delay: number }) {
     const [hovered, setHovered] = useState(false);
     return (
         <motion.div
@@ -216,7 +216,7 @@ function SensorCard({ img, title, desc, specs, delay }) {
 }
 
 // ─── Section link card ────────────────────────────────────────────────────────
-function SectionCard({ name, link, icon, desc, delay }) {
+function SectionCard({ name, link, icon, desc, delay }: { name: string; link: string; icon: string; desc: string; delay: number }) {
     const [h, setH] = useState(false);
     return (
         <motion.div
