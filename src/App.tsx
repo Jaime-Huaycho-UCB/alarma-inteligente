@@ -8,6 +8,7 @@ import { ModeloSMART } from "./pages/ModeloSMART";
 import { DefinicionProblema } from "./pages/DefinicionProblema";
 import { Ishikawa } from "./pages/Ishikawa";
 import { LluviaIdeas } from "./pages/LluviaIdeas";
+import { Objetivo } from "./pages/Objetivo";
 
 export const App = () => {
   return (
@@ -24,6 +25,7 @@ export const App = () => {
             <Route path="/definicion-problema" element={<DefinicionProblema />} />
             <Route path="/ishikawa" element={<Ishikawa />} />
             <Route path="/lluvia-ideas" element={<LluviaIdeas />} />
+            <Route path="/objetivo" element={<Objetivo />} />
           </Routes>
         </main>
 
