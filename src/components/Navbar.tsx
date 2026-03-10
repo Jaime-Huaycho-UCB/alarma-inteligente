@@ -1,7 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
+// ─────────────────────────────────────────────────────────────────────────────
+// ✏️  AGREGA secciones aquí — todas al mismo nivel, sin límite
+// ─────────────────────────────────────────────────────────────────────────────
 const navItems = [
     { name: "Inicio", path: "/", code: "00" },
     { name: "Lluvia de ideas", path: "/lluvia-ideas", code: "01" },
@@ -12,70 +16,92 @@ const navItems = [
     { name: "SMART", path: "/smart", code: "06" },
     { name: "PART", path: "/modelo-part", code: "07" },
     { name: "SmartSheet", path: "/smartsheet", code: "08" },
-    { name: "Contactos", path: "/contactos", code: "09" }
+    { name: "Contactos", path: "/contactos", code: "09" },
+    // Agrega más aquí:
+    // { name: "Nueva sección", path: "/nueva", code: "10" },
 ];
+// ─────────────────────────────────────────────────────────────────────────────
 
 export const Navbar = () => {
-    const [open, setOpen] = useState(false);
+    const [mobileOpen, setMobileOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
+    const [canScrollL, setCanScrollL] = useState(false);
+    const [canScrollR, setCanScrollR] = useState(false);
+    const navRef = useRef<HTMLDivElement>(null);
     const location = useLocation();
 
+    // Scroll listener para el header
     useEffect(() => {
         const handler = () => setScrolled(window.scrollY > 20);
         window.addEventListener("scroll", handler);
         return () => window.removeEventListener("scroll", handler);
     }, []);
 
-    // Close mobile menu on route change
+    // Cierra el menú mobile al cambiar ruta
     useEffect(() => {
-        setOpen(false);
+        setMobileOpen(false);
     }, [location.pathname]);
+
+    // Detecta si la nav puede hacer scroll izq/der
+    const updateArrows = () => {
+        const el = navRef.current;
+        if (!el) return;
+        setCanScrollL(el.scrollLeft > 4);
+        setCanScrollR(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+    };
+
+    useEffect(() => {
+        const el = navRef.current;
+        if (!el) return;
+        updateArrows();
+        el.addEventListener("scroll", updateArrows);
+        window.addEventListener("resize", updateArrows);
+        return () => {
+            el.removeEventListener("scroll", updateArrows);
+            window.removeEventListener("resize", updateArrows);
+        };
+    }, []);
+
+    // Al cambiar ruta, hace scroll al item activo
+    useEffect(() => {
+        const el = navRef.current;
+        if (!el) return;
+        const activeEl = el.querySelector<HTMLElement>("[data-active='true']");
+        if (activeEl) {
+            const left =
+                activeEl.offsetLeft -
+                el.clientWidth / 2 +
+                activeEl.offsetWidth / 2;
+            el.scrollTo({ left, behavior: "smooth" });
+        }
+        setTimeout(updateArrows, 350);
+    }, [location.pathname]);
+
+    const scrollNav = (dir: "left" | "right") => {
+        navRef.current?.scrollBy({
+            left: dir === "left" ? -160 : 160,
+            behavior: "smooth",
+        });
+    };
 
     return (
         <>
             <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@600;700&display=swap');
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
 
-        .nav-link-item {
-          position: relative;
-          display: flex;
-          align-items: center;
-          gap: 0.35rem;
-          font-family: 'Syne', sans-serif;
-          font-size: 0.82rem;
-          font-weight: 600;
-          color: #94a3b8;
-          text-decoration: none;
-          padding: 0.35rem 0;
-          transition: color 0.25s ease;
-          letter-spacing: 0.02em;
+        .nav-scroll::-webkit-scrollbar { display: none; }
+        .nav-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
+        @media (max-width: 768px) {
+          .nav-center { display: none !important; }
+          .nav-status  { display: none !important; }
+          .nav-toggle  { display: flex  !important; }
         }
-
-        .nav-link-item:hover { color: #e2e8f0; }
-        .nav-link-item.active { color: #22d3ee; }
-
-        .nav-link-item .code {
-          font-family: 'Space Mono', monospace;
-          font-size: 0.62rem;
-          color: #334155;
-          transition: color 0.25s ease;
-        }
-
-        .nav-link-item:hover .code,
-        .nav-link-item.active .code { color: #0891b2; }
-
-        .nav-underline {
-          position: absolute;
-          bottom: -2px;
-          left: 0;
-          height: 1px;
-          width: 100%;
-          background: linear-gradient(90deg, #22d3ee, #0ea5e9);
-        }
-
-        @keyframes blink {
-          0%,100% { opacity: 1; }
-          50% { opacity: 0; }
+        @media (min-width: 769px) {
+          .nav-center { display: flex !important; }
+          .nav-status  { display: flex  !important; }
+          .nav-toggle  { display: none  !important; }
         }
       `}</style>
 
@@ -87,22 +113,22 @@ export const Navbar = () => {
                     backdropFilter: "blur(12px)",
                     WebkitBackdropFilter: "blur(12px)",
                     background: scrolled
-                        ? "rgba(2,6,23,0.92)"
-                        : "rgba(15,23,42,0.75)",
-                    borderBottom: "1px solid rgba(34,211,238,0.12)",
+                        ? "rgba(2,6,23,0.95)"
+                        : "rgba(15,23,42,0.8)",
+                    borderBottom: "1px solid rgba(34,211,238,0.1)",
                     boxShadow: scrolled ? "0 4px 30px rgba(0,0,0,0.4)" : "none",
-                    transition: "background 0.4s ease, box-shadow 0.4s ease",
+                    transition: "background 0.4s, box-shadow 0.4s",
                 }}
             >
                 <div
                     style={{
-                        maxWidth: 1280,
+                        maxWidth: 1400,
                         margin: "0 auto",
-                        padding: "0 1.5rem",
+                        padding: "0 1.25rem",
                         height: 60,
                         display: "flex",
                         alignItems: "center",
-                        justifyContent: "space-between",
+                        gap: "1rem",
                     }}
                 >
                     {/* ── LOGO ── */}
@@ -116,7 +142,6 @@ export const Navbar = () => {
                             flexShrink: 0,
                         }}
                     >
-                        {/* Animated shield icon */}
                         <div
                             style={{
                                 position: "relative",
@@ -155,7 +180,6 @@ export const Navbar = () => {
                                     }}
                                 />
                             </motion.div>
-                            {/* Blink dot */}
                             <div
                                 style={{
                                     position: "absolute",
@@ -170,8 +194,7 @@ export const Navbar = () => {
                                 }}
                             />
                         </div>
-
-                        <div>
+                        <div style={{ flexShrink: 0 }}>
                             <div
                                 style={{
                                     fontFamily: "'Syne', sans-serif",
@@ -197,46 +220,227 @@ export const Navbar = () => {
                         </div>
                     </Link>
 
-                    {/* ── DESKTOP NAV ── */}
-                    <nav
+                    {/* ── NAV SCROLLEABLE (desktop) ── */}
+                    <div
+                        className="nav-center"
                         style={{
-                            display: "flex",
+                            flex: 1,
                             alignItems: "center",
-                            gap: "0.25rem",
+                            minWidth: 0,
+                            position: "relative",
                         }}
-                        className="hidden-mobile"
                     >
-                        {navItems.map((item) => {
-                            const isActive = location.pathname === item.path;
-                            return (
-                                <Link
-                                    key={item.path}
-                                    to={item.path}
-                                    className={`nav-link-item ${isActive ? "active" : ""}`}
-                                    style={{ padding: "0.35rem 0.65rem" }}
+                        {/* Flecha izquierda */}
+                        <AnimatePresence>
+                            {canScrollL && (
+                                <motion.button
+                                    initial={{ opacity: 0, x: 4 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: 4 }}
+                                    onClick={() => scrollNav("left")}
+                                    style={{
+                                        position: "absolute",
+                                        left: 0,
+                                        zIndex: 2,
+                                        width: 26,
+                                        height: 26,
+                                        borderRadius: "50%",
+                                        background: "rgba(2,6,23,0.9)",
+                                        border: "1px solid rgba(34,211,238,0.2)",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        cursor: "pointer",
+                                        flexShrink: 0,
+                                        boxShadow:
+                                            "4px 0 12px rgba(2,6,23,0.8)",
+                                    }}
                                 >
-                                    <span className="code">{item.code}</span>
-                                    {item.name}
-                                    {isActive && (
-                                        <motion.span
-                                            layoutId="nav-indicator"
-                                            className="nav-underline"
-                                            transition={{
-                                                type: "spring",
-                                                stiffness: 400,
-                                                damping: 28,
+                                    <ChevronLeft
+                                        size={13}
+                                        style={{ color: "#22d3ee" }}
+                                    />
+                                </motion.button>
+                            )}
+                        </AnimatePresence>
+
+                        {/* Fade izquierdo */}
+                        {canScrollL && (
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    left: 0,
+                                    top: 0,
+                                    bottom: 0,
+                                    width: 48,
+                                    background:
+                                        "linear-gradient(to right, rgba(2,6,23,0.9), transparent)",
+                                    zIndex: 1,
+                                    pointerEvents: "none",
+                                }}
+                            />
+                        )}
+
+                        {/* Lista scrolleable */}
+                        <div
+                            ref={navRef}
+                            className="nav-scroll"
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "0.15rem",
+                                overflowX: "auto",
+                                padding: "0 2rem",
+                                scrollSnapType: "x proximity",
+                            }}
+                        >
+                            {navItems.map((item) => {
+                                const isActive =
+                                    location.pathname === item.path;
+                                return (
+                                    <Link
+                                        key={item.path}
+                                        to={item.path}
+                                        data-active={
+                                            isActive ? "true" : "false"
+                                        }
+                                        style={{
+                                            display: "flex",
+                                            alignItems: "center",
+                                            gap: "0.3rem",
+                                            flexShrink: 0,
+                                            scrollSnapAlign: "start",
+                                            fontFamily: "'Syne', sans-serif",
+                                            fontWeight: 600,
+                                            fontSize: "0.8rem",
+                                            color: isActive
+                                                ? "#22d3ee"
+                                                : "#64748b",
+                                            textDecoration: "none",
+                                            padding: "0.3rem 0.6rem",
+                                            borderRadius: "0.4rem",
+                                            background: isActive
+                                                ? "rgba(34,211,238,0.08)"
+                                                : "transparent",
+                                            border: `1px solid ${isActive ? "rgba(34,211,238,0.2)" : "transparent"}`,
+                                            transition:
+                                                "color 0.2s, background 0.2s, border-color 0.2s",
+                                            position: "relative",
+                                            letterSpacing: "0.01em",
+                                            whiteSpace: "nowrap",
+                                        }}
+                                        onMouseEnter={(e) => {
+                                            if (!isActive) {
+                                                e.currentTarget.style.color =
+                                                    "#e2e8f0";
+                                                e.currentTarget.style.background =
+                                                    "rgba(255,255,255,0.04)";
+                                            }
+                                        }}
+                                        onMouseLeave={(e) => {
+                                            if (!isActive) {
+                                                e.currentTarget.style.color =
+                                                    "#64748b";
+                                                e.currentTarget.style.background =
+                                                    "transparent";
+                                            }
+                                        }}
+                                    >
+                                        <span
+                                            style={{
+                                                fontFamily:
+                                                    "'Space Mono', monospace",
+                                                fontSize: "0.58rem",
+                                                color: isActive
+                                                    ? "#0891b2"
+                                                    : "#1e293b",
                                             }}
-                                        />
-                                    )}
-                                </Link>
-                            );
-                        })}
-                    </nav>
+                                        >
+                                            {item.code}
+                                        </span>
+                                        {item.name}
+                                        {/* Underline activo */}
+                                        {isActive && (
+                                            <motion.div
+                                                layoutId="nav-indicator"
+                                                style={{
+                                                    position: "absolute",
+                                                    bottom: -1,
+                                                    left: "10%",
+                                                    right: "10%",
+                                                    height: 1,
+                                                    background:
+                                                        "linear-gradient(90deg, transparent, #22d3ee, transparent)",
+                                                    borderRadius: 1,
+                                                }}
+                                                transition={{
+                                                    type: "spring",
+                                                    stiffness: 400,
+                                                    damping: 30,
+                                                }}
+                                            />
+                                        )}
+                                    </Link>
+                                );
+                            })}
+                        </div>
+
+                        {/* Fade derecho */}
+                        {canScrollR && (
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    right: 0,
+                                    top: 0,
+                                    bottom: 0,
+                                    width: 48,
+                                    background:
+                                        "linear-gradient(to left, rgba(2,6,23,0.9), transparent)",
+                                    zIndex: 1,
+                                    pointerEvents: "none",
+                                }}
+                            />
+                        )}
+
+                        {/* Flecha derecha */}
+                        <AnimatePresence>
+                            {canScrollR && (
+                                <motion.button
+                                    initial={{ opacity: 0, x: -4 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -4 }}
+                                    onClick={() => scrollNav("right")}
+                                    style={{
+                                        position: "absolute",
+                                        right: 0,
+                                        zIndex: 2,
+                                        width: 26,
+                                        height: 26,
+                                        borderRadius: "50%",
+                                        background: "rgba(2,6,23,0.9)",
+                                        border: "1px solid rgba(34,211,238,0.2)",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        cursor: "pointer",
+                                        flexShrink: 0,
+                                        boxShadow:
+                                            "-4px 0 12px rgba(2,6,23,0.8)",
+                                    }}
+                                >
+                                    <ChevronRight
+                                        size={13}
+                                        style={{ color: "#22d3ee" }}
+                                    />
+                                </motion.button>
+                            )}
+                        </AnimatePresence>
+                    </div>
 
                     {/* ── STATUS PILL (desktop) ── */}
                     <div
+                        className="nav-status"
                         style={{
-                            display: "flex",
                             alignItems: "center",
                             gap: "0.5rem",
                             padding: "0.35rem 0.9rem",
@@ -245,7 +449,6 @@ export const Navbar = () => {
                             background: "rgba(6,182,212,0.06)",
                             flexShrink: 0,
                         }}
-                        className="hidden-mobile"
                     >
                         <div
                             style={{
@@ -271,8 +474,8 @@ export const Navbar = () => {
 
                     {/* ── MOBILE TOGGLE ── */}
                     <button
-                        onClick={() => setOpen(!open)}
-                        className="show-mobile"
+                        onClick={() => setMobileOpen((o) => !o)}
+                        className="nav-toggle"
                         style={{
                             background: "none",
                             border: "1px solid rgba(34,211,238,0.25)",
@@ -287,14 +490,14 @@ export const Navbar = () => {
                                 width: 20,
                                 display: "flex",
                                 flexDirection: "column",
-                                gap: open ? "0px" : "4px",
+                                gap: mobileOpen ? "0px" : "4px",
                                 transition: "gap 0.2s",
                             }}
                         >
                             <motion.div
                                 animate={{
-                                    rotate: open ? 45 : 0,
-                                    y: open ? 6 : 0,
+                                    rotate: mobileOpen ? 45 : 0,
+                                    y: mobileOpen ? 6 : 0,
                                 }}
                                 style={{
                                     height: 1.5,
@@ -303,7 +506,7 @@ export const Navbar = () => {
                                 }}
                             />
                             <motion.div
-                                animate={{ opacity: open ? 0 : 1 }}
+                                animate={{ opacity: mobileOpen ? 0 : 1 }}
                                 style={{
                                     height: 1.5,
                                     background: "#22d3ee",
@@ -312,8 +515,8 @@ export const Navbar = () => {
                             />
                             <motion.div
                                 animate={{
-                                    rotate: open ? -45 : 0,
-                                    y: open ? -6 : 0,
+                                    rotate: mobileOpen ? -45 : 0,
+                                    y: mobileOpen ? -6 : 0,
                                 }}
                                 style={{
                                     height: 1.5,
@@ -327,7 +530,7 @@ export const Navbar = () => {
 
                 {/* ── MOBILE MENU ── */}
                 <AnimatePresence>
-                    {open && (
+                    {mobileOpen && (
                         <motion.div
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: "auto" }}
@@ -336,7 +539,7 @@ export const Navbar = () => {
                             style={{
                                 overflow: "hidden",
                                 borderTop: "1px solid rgba(34,211,238,0.1)",
-                                background: "rgba(2,6,23,0.97)",
+                                background: "rgba(2,6,23,0.98)",
                             }}
                         >
                             <div
@@ -344,7 +547,7 @@ export const Navbar = () => {
                                     padding: "1rem 1.5rem",
                                     display: "flex",
                                     flexDirection: "column",
-                                    gap: "0.25rem",
+                                    gap: "0.2rem",
                                 }}
                             >
                                 {navItems.map((item, i) => {
@@ -355,7 +558,7 @@ export const Navbar = () => {
                                             key={item.path}
                                             initial={{ opacity: 0, x: -12 }}
                                             animate={{ opacity: 1, x: 0 }}
-                                            transition={{ delay: i * 0.04 }}
+                                            transition={{ delay: i * 0.03 }}
                                         >
                                             <Link
                                                 to={item.path}
@@ -370,7 +573,7 @@ export const Navbar = () => {
                                                         ? "rgba(6,182,212,0.1)"
                                                         : "transparent",
                                                     border: `1px solid ${isActive ? "rgba(34,211,238,0.25)" : "transparent"}`,
-                                                    transition: "all 0.2s ease",
+                                                    transition: "all 0.15s",
                                                 }}
                                             >
                                                 <span
@@ -390,8 +593,8 @@ export const Navbar = () => {
                                                     style={{
                                                         fontFamily:
                                                             "'Syne', sans-serif",
-                                                        fontSize: "0.9rem",
                                                         fontWeight: 600,
+                                                        fontSize: "0.9rem",
                                                         color: isActive
                                                             ? "#22d3ee"
                                                             : "#94a3b8",
@@ -404,7 +607,7 @@ export const Navbar = () => {
                                                         style={{
                                                             marginLeft: "auto",
                                                             color: "#22d3ee",
-                                                            fontSize: "0.75rem",
+                                                            fontSize: "0.7rem",
                                                         }}
                                                     >
                                                         ●
@@ -414,12 +617,10 @@ export const Navbar = () => {
                                         </motion.div>
                                     );
                                 })}
-
-                                {/* Mobile status */}
                                 <div
                                     style={{
                                         marginTop: "0.75rem",
-                                        padding: "0.65rem 0.75rem",
+                                        paddingTop: "0.75rem",
                                         borderTop:
                                             "1px solid rgba(34,211,238,0.08)",
                                         display: "flex",
@@ -440,7 +641,7 @@ export const Navbar = () => {
                                         style={{
                                             fontFamily:
                                                 "'Space Mono', monospace",
-                                            fontSize: "0.65rem",
+                                            fontSize: "0.62rem",
                                             color: "#334155",
                                             letterSpacing: "0.08em",
                                         }}
@@ -452,18 +653,6 @@ export const Navbar = () => {
                         </motion.div>
                     )}
                 </AnimatePresence>
-
-                {/* Responsive styles injected */}
-                <style>{`
-          @media (max-width: 768px) {
-            .hidden-mobile { display: none !important; }
-            .show-mobile { display: flex !important; }
-          }
-          @media (min-width: 769px) {
-            .show-mobile { display: none !important; }
-            .hidden-mobile { display: flex !important; }
-          }
-        `}</style>
             </header>
         </>
     );
