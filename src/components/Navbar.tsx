@@ -11,6 +11,7 @@ const navItems = [
     { name: "Objetivo", path: "/objetivo", code: "05" },
     { name: "PART", path: "/modelo-part", code: "06" },
     { name: "SMART", path: "/smart", code: "07" },
+    { name: "SmartSheet", path: "/smartsheet", code: "08" },
 ];
 
 export const Navbar = () => {
