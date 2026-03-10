@@ -424,30 +424,7 @@ export const Objetivo = () => {
                                     fontSize: "1.05rem",
                                 }}
                             >
-                                Diseñar e implementar un{" "}
-                                <span
-                                    style={{
-                                        color: "#22d3ee",
-                                        fontWeight: 600,
-                                    }}
-                                >
-                                    sistema de alarma doméstico
-                                </span>{" "}
-                                basado en sensores inteligentes que permita
-                                detectar accesos no autorizados y enviar
-                                <span
-                                    style={{
-                                        color: "#22d3ee",
-                                        fontWeight: 600,
-                                    }}
-                                >
-                                    {" "}
-                                    notificaciones en tiempo real
-                                </span>{" "}
-                                al usuario, con el propósito de mejorar la
-                                seguridad del hogar mediante el uso de
-                                tecnología accesible y de bajo costo.
-                            </p>
+                                Aplicar los conocimientos de la materia para proponer un modelo de seguridad doméstica basado en sensores inteligentes, con el fin de validar los conocimientos adquiridos en la materia de Innovacion, desarrollo y tecnologia de la Universidad Catolica Boliviana Sao Paulo - Sede La Paz </p>
 
                             {/* Checklist */}
                             <div

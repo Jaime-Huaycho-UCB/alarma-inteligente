@@ -1157,68 +1157,6 @@ export const SmartSheet = () => {
                         </div>
                     </motion.div>
                 </div>
-
-                {/* Nota instructiva */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.5, delay: 0.3 }}
-                    viewport={{ once: true }}
-                    style={{
-                        marginTop: "1.5rem",
-                        padding: "1rem 1.25rem",
-                        background: "rgba(245,158,11,0.06)",
-                        border: "1px solid rgba(245,158,11,0.2)",
-                        borderRadius: "0.75rem",
-                        display: "flex",
-                        alignItems: "flex-start",
-                        gap: "0.75rem",
-                    }}
-                >
-                    <AlertTriangle
-                        size={16}
-                        style={{
-                            color: "#f59e0b",
-                            flexShrink: 0,
-                            marginTop: "0.1rem",
-                        }}
-                    />
-                    <div
-                        style={{
-                            fontFamily: "'Space Mono', monospace",
-                            fontSize: "0.68rem",
-                            color: "#92400e",
-                            lineHeight: 1.7,
-                        }}
-                    >
-                        <span style={{ color: "#f59e0b", fontWeight: 700 }}>
-                            INSTRUCCIÓN:{" "}
-                        </span>
-                        Reemplaza{" "}
-                        <code
-                            style={{
-                                background: "rgba(245,158,11,0.15)",
-                                padding: "0.1rem 0.35rem",
-                                borderRadius: "3px",
-                                color: "#fbbf24",
-                            }}
-                        >
-                            IMG_HOJA_SMARTSHEET
-                        </code>{" "}
-                        y{" "}
-                        <code
-                            style={{
-                                background: "rgba(245,158,11,0.15)",
-                                padding: "0.1rem 0.35rem",
-                                borderRadius: "3px",
-                                color: "#fbbf24",
-                            }}
-                        >
-                            IMG_GANTT_SMARTSHEET
-                        </code>{" "}
-                        al inicio del archivo con las rutas de tus capturas.
-                    </div>
-                </motion.div>
             </section>
 
             {/* ── CÓMO LO USAMOS ───────────────────────────────────────────────── */}

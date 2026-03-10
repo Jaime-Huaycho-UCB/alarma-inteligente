@@ -9,9 +9,10 @@ const navItems = [
     { name: "Definición", path: "/definicion-problema", code: "03" },
     { name: "La Pregunta", path: "/la-pregunta", code: "04" },
     { name: "Objetivo", path: "/objetivo", code: "05" },
-    { name: "PART", path: "/modelo-part", code: "06" },
-    { name: "SMART", path: "/smart", code: "07" },
+    { name: "SMART", path: "/smart", code: "06" },
+    { name: "PART", path: "/modelo-part", code: "07" },
     { name: "SmartSheet", path: "/smartsheet", code: "08" },
+    { name: "Contactos", path: "/contactos", code: "09" }
 ];
 
 export const Navbar = () => {

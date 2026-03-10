@@ -10,6 +10,7 @@ import { Ishikawa } from "./pages/Ishikawa";
 import { LluviaIdeas } from "./pages/LluviaIdeas";
 import { Objetivo } from "./pages/Objetivo";
 import { SmartSheet } from "./pages/SmartSheet";
+import { Contactos } from "./pages/Contactos";
 
 export const App = () => {
   return (
@@ -28,6 +29,7 @@ export const App = () => {
             <Route path="/lluvia-ideas" element={<LluviaIdeas />} />
             <Route path="/objetivo" element={<Objetivo />} />
             <Route path="/smartsheet" element={<SmartSheet />} />
+            <Route path="/contactos" element={<Contactos />} />
           </Routes>
         </main>
 

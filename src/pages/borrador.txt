@@ -1,0 +1,21 @@
+{
+        imagen: FOTO_FRANZ,
+        nombre: "FRANZ ELIOT RAMOS HUACARA",
+        correo: "franz.ramos@ucb.edu.bo",
+        celular: "+591 78827052",
+        rol: "Integrante",
+    },
+    {
+        imagen: "/assets/integrante-2.jpg",
+        nombre: "JAIME IGNACIO HUAYCHO CLAVEL",
+        correo: "jaime.huaycho@ucb.edu.bo",
+        celular: "+591 64177602",
+        rol: "Integrante",
+    },
+    {
+        imagen: "/assets/integrante-3.jpg",
+        nombre: "Angelo Humerez",
+        correo: "correo@example.com",
+        celular: "+591 60000003",
+        rol: "Integrante",
+    },
