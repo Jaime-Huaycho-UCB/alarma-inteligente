@@ -589,17 +589,17 @@ export const Contactos = () => {
                             {[
                                 {
                                     label: "Proyecto",
-                                    value: "Sistema de Alarma Arduino",
+                                    value: "Sistema de Alarma antirobo",
                                     color: "#22d3ee",
                                 },
                                 {
                                     label: "Año",
-                                    value: "2024",
+                                    value: "2026",
                                     color: "#34d399",
                                 },
                                 {
                                     label: "Materia",
-                                    value: "Ingeniería Electrónica",
+                                    value: "Innovacion desarrollo y tecnologia",
                                     color: "#f59e0b",
                                 },
                             ].map(({ label, value, color }) => (

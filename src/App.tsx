@@ -11,6 +11,7 @@ import { LluviaIdeas } from "./pages/LluviaIdeas";
 import { Objetivo } from "./pages/Objetivo";
 import { SmartSheet } from "./pages/SmartSheet";
 import { Contactos } from "./pages/Contactos";
+import { ModeloIDEF0 } from "./pages/ModeloIDEF0";
 
 export const App = () => {
   return (
@@ -30,6 +31,7 @@ export const App = () => {
             <Route path="/objetivo" element={<Objetivo />} />
             <Route path="/smartsheet" element={<SmartSheet />} />
             <Route path="/contactos" element={<Contactos />} />
+            <Route path="/modelo-idef0" element={<ModeloIDEF0 />} />
           </Routes>
         </main>
 
