@@ -12,6 +12,7 @@ import { Objetivo } from "./pages/Objetivo";
 import { SmartSheet } from "./pages/SmartSheet";
 import { Contactos } from "./pages/Contactos";
 import { ModeloIDEF0 } from "./pages/ModeloIDEF0";
+import { BPMN } from "./pages/BPMN";
 
 export const App = () => {
   return (
@@ -32,6 +33,7 @@ export const App = () => {
             <Route path="/smartsheet" element={<SmartSheet />} />
             <Route path="/contactos" element={<Contactos />} />
             <Route path="/modelo-idef0" element={<ModeloIDEF0 />} />
+            <Route path="/bpmn" element={<BPMN />} />
           </Routes>
         </main>
 
