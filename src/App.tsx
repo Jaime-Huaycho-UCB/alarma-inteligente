@@ -15,6 +15,7 @@ import { ModeloIDEF0 } from "./pages/ModeloIDEF0";
 import { BPMN } from "./pages/BPMN";
 import { CasoUso } from "./pages/CasoUso";
 import { Recursos } from "./pages/Recursos";
+import { DiagramaTecnologico } from "./pages/DiagramaTecnologico";
 
 export const App = () => {
   return (
@@ -38,6 +39,7 @@ export const App = () => {
             <Route path="/bpmn" element={<BPMN />} />
             <Route path="/caso-uso" element={<CasoUso />} />
             <Route path="/recursos" element={<Recursos />} />
+            <Route path="/diagrama-tecnologico" element={<DiagramaTecnologico />} />
           </Routes>
         </main>
 

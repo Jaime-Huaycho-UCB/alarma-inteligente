@@ -57,6 +57,7 @@ const NAV_CONFIG: NavEntry[] = [
             { name: "BPMN", path: "/bpmn", code: "11" },
             { name: "Caso de Uso", path: "/caso-uso", code: "12" },
             { name: "Recursos", path: "/recursos", code: "13" },
+            { name: "Diagrama Tecnológico", path: "/diagrama-tecnologico", code: "14" },
             // Agrega más secciones aquí
         ],
     },
