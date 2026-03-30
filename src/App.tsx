@@ -13,6 +13,7 @@ import { SmartSheet } from "./pages/SmartSheet";
 import { Contactos } from "./pages/Contactos";
 import { ModeloIDEF0 } from "./pages/ModeloIDEF0";
 import { BPMN } from "./pages/BPMN";
+import { CasoUso } from "./pages/CasoUso";
 
 export const App = () => {
   return (
@@ -34,6 +35,7 @@ export const App = () => {
             <Route path="/contactos" element={<Contactos />} />
             <Route path="/modelo-idef0" element={<ModeloIDEF0 />} />
             <Route path="/bpmn" element={<BPMN />} />
+            <Route path="/caso-uso" element={<CasoUso />} />
           </Routes>
         </main>
 
