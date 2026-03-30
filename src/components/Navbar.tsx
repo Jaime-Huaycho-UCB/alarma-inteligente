@@ -56,6 +56,7 @@ const NAV_CONFIG: NavEntry[] = [
             { name: "IDEF0", path: "/modelo-idef0", code: "10" },
             { name: "BPMN", path: "/bpmn", code: "11" },
             { name: "Caso de Uso", path: "/caso-uso", code: "12" },
+            { name: "Recursos", path: "/recursos", code: "13" },
             // Agrega más secciones aquí
         ],
     },
