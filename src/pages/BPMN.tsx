@@ -1711,6 +1711,413 @@ export const BPMN = () => {
                     </div>
                 </div>
             </section>
+
+            {/* ── HERRAMIENTAS UTILIZADAS ───────────────────────────────────────── */}
+            <section
+                style={{
+                    padding: "6rem 1.5rem",
+                    background: "linear-gradient(180deg, rgba(167,139,250,0.04) 0%, transparent 100%)",
+                    borderTop: "1px solid rgba(34,211,238,0.1)",
+                }}
+            >
+                <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true }}
+                        style={{ textAlign: "center", marginBottom: "3rem" }}
+                    >
+                        <div
+                            style={{
+                                fontSize: "0.8rem",
+                                fontFamily: "'Space Mono', monospace",
+                                color: "#a78bfa",
+                                letterSpacing: "0.1em",
+                                textTransform: "uppercase",
+                                marginBottom: "0.75rem",
+                                opacity: 0.7,
+                            }}
+                        >
+                            Stack de diseño
+                        </div>
+                        <h2
+                            style={{
+                                fontSize: "2.2rem",
+                                fontWeight: 700,
+                                marginBottom: "0.5rem",
+                            }}
+                        >
+                            Herramientas Utilizadas
+                        </h2>
+                        <p
+                            style={{
+                                color: "#64748b",
+                                fontSize: "1rem",
+                                lineHeight: 1.8,
+                                maxWidth: 550,
+                                margin: "0 auto",
+                            }}
+                        >
+                            Estas son las herramientas con las que se construyó el diagrama BPMN del sistema de alarma inteligente
+                        </p>
+                    </motion.div>
+
+                    <div
+                        style={{
+                            display: "grid",
+                            gridTemplateColumns: "repeat(auto-fit, minmax(340px, 1fr))",
+                            gap: "1.5rem",
+                        }}
+                    >
+                        {/* bpmn.io */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0 }}
+                            viewport={{ once: true }}
+                            whileHover={{ y: -6 }}
+                            style={{
+                                background: "#0f172a",
+                                border: "1px solid rgba(34,211,238,0.22)",
+                                borderRadius: "1rem",
+                                padding: "2rem",
+                                transition: "box-shadow 0.3s",
+                                position: "relative",
+                                overflow: "hidden",
+                            }}
+                            onMouseEnter={(e) =>
+                                (e.currentTarget.style.boxShadow = "0 20px 40px rgba(34,211,238,0.12)")
+                            }
+                            onMouseLeave={(e) =>
+                                (e.currentTarget.style.boxShadow = "none")
+                            }
+                        >
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    top: 0,
+                                    right: 0,
+                                    width: 120,
+                                    height: 120,
+                                    background: "radial-gradient(circle, rgba(34,211,238,0.08) 0%, transparent 70%)",
+                                    borderRadius: "0 1rem 0 0",
+                                }}
+                            />
+                            <div
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "1rem",
+                                    marginBottom: "1.25rem",
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        width: 52,
+                                        height: 52,
+                                        borderRadius: "0.75rem",
+                                        background: "rgba(34,211,238,0.1)",
+                                        border: "1px solid rgba(34,211,238,0.3)",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        fontSize: "1.6rem",
+                                        flexShrink: 0,
+                                    }}
+                                >
+                                    🗺️
+                                </div>
+                                <div>
+                                    <div
+                                        style={{
+                                            color: "#22d3ee",
+                                            fontWeight: 700,
+                                            fontSize: "1.1rem",
+                                            fontFamily: "'Syne', sans-serif",
+                                        }}
+                                    >
+                                        bpmn.io
+                                    </div>
+                                    <div
+                                        style={{
+                                            color: "#64748b",
+                                            fontSize: "0.75rem",
+                                            fontFamily: "'Space Mono', monospace",
+                                        }}
+                                    >
+                                        Editor de diagramas BPMN
+                                    </div>
+                                </div>
+                            </div>
+                            <p
+                                style={{
+                                    color: "#94a3b8",
+                                    fontSize: "0.85rem",
+                                    lineHeight: 1.7,
+                                    margin: "0 0 1.25rem",
+                                }}
+                            >
+                                Herramienta web gratuita y open-source para modelar diagramas BPMN 2.0 directamente en el navegador. Permite crear, editar y exportar flujos de proceso con una interfaz drag-and-drop intuitiva.
+                            </p>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    flexWrap: "wrap",
+                                    gap: "0.5rem",
+                                }}
+                            >
+                                {["BPMN 2.0", "Drag & Drop", "Exportar XML", "Open source"].map((tag) => (
+                                    <span
+                                        key={tag}
+                                        style={{
+                                            background: "rgba(34,211,238,0.08)",
+                                            border: "1px solid rgba(34,211,238,0.2)",
+                                            color: "#22d3ee",
+                                            borderRadius: "0.4rem",
+                                            padding: "0.25rem 0.6rem",
+                                            fontSize: "0.72rem",
+                                            fontFamily: "'Space Mono', monospace",
+                                        }}
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                            <div
+                                style={{
+                                    marginTop: "1.25rem",
+                                    paddingTop: "1.25rem",
+                                    borderTop: "1px solid rgba(34,211,238,0.1)",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "0.5rem",
+                                    color: "#64748b",
+                                    fontSize: "0.78rem",
+                                    fontFamily: "'Space Mono', monospace",
+                                }}
+                            >
+                                <span style={{ color: "#22d3ee" }}>→</span>
+                                Usado para construir el diagrama del proceso de la alarma
+                            </div>
+                        </motion.div>
+
+                        {/* Gemini */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
+                            viewport={{ once: true }}
+                            whileHover={{ y: -6 }}
+                            style={{
+                                background: "#0f172a",
+                                border: "1px solid rgba(52,211,153,0.22)",
+                                borderRadius: "1rem",
+                                padding: "2rem",
+                                transition: "box-shadow 0.3s",
+                                position: "relative",
+                                overflow: "hidden",
+                            }}
+                            onMouseEnter={(e) =>
+                                (e.currentTarget.style.boxShadow = "0 20px 40px rgba(52,211,153,0.12)")
+                            }
+                            onMouseLeave={(e) =>
+                                (e.currentTarget.style.boxShadow = "none")
+                            }
+                        >
+                            <div
+                                style={{
+                                    position: "absolute",
+                                    top: 0,
+                                    right: 0,
+                                    width: 120,
+                                    height: 120,
+                                    background: "radial-gradient(circle, rgba(52,211,153,0.08) 0%, transparent 70%)",
+                                    borderRadius: "0 1rem 0 0",
+                                }}
+                            />
+                            <div
+                                style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "1rem",
+                                    marginBottom: "1.25rem",
+                                }}
+                            >
+                                <div
+                                    style={{
+                                        width: 52,
+                                        height: 52,
+                                        borderRadius: "0.75rem",
+                                        background: "rgba(52,211,153,0.1)",
+                                        border: "1px solid rgba(52,211,153,0.3)",
+                                        display: "flex",
+                                        alignItems: "center",
+                                        justifyContent: "center",
+                                        fontSize: "1.6rem",
+                                        flexShrink: 0,
+                                    }}
+                                >
+                                    ✦
+                                </div>
+                                <div>
+                                    <div
+                                        style={{
+                                            color: "#34d399",
+                                            fontWeight: 700,
+                                            fontSize: "1.1rem",
+                                            fontFamily: "'Syne', sans-serif",
+                                        }}
+                                    >
+                                        Google Gemini
+                                    </div>
+                                    <div
+                                        style={{
+                                            color: "#64748b",
+                                            fontSize: "0.75rem",
+                                            fontFamily: "'Space Mono', monospace",
+                                        }}
+                                    >
+                                        Asistente de IA generativa
+                                    </div>
+                                </div>
+                            </div>
+                            <p
+                                style={{
+                                    color: "#94a3b8",
+                                    fontSize: "0.85rem",
+                                    lineHeight: 1.7,
+                                    margin: "0 0 1.25rem",
+                                }}
+                            >
+                                Se le proporcionó el diagrama BPMN construido en bpmn.io para que analizara el flujo, validara la lógica del proceso e identificara posibles mejoras en la secuencia de actividades del sistema de alarma.
+                            </p>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    flexWrap: "wrap",
+                                    gap: "0.5rem",
+                                }}
+                            >
+                                {["Análisis de flujos", "Validación lógica", "IA generativa", "Google"].map((tag) => (
+                                    <span
+                                        key={tag}
+                                        style={{
+                                            background: "rgba(52,211,153,0.08)",
+                                            border: "1px solid rgba(52,211,153,0.2)",
+                                            color: "#34d399",
+                                            borderRadius: "0.4rem",
+                                            padding: "0.25rem 0.6rem",
+                                            fontSize: "0.72rem",
+                                            fontFamily: "'Space Mono', monospace",
+                                        }}
+                                    >
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                            <div
+                                style={{
+                                    marginTop: "1.25rem",
+                                    paddingTop: "1.25rem",
+                                    borderTop: "1px solid rgba(52,211,153,0.1)",
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "0.5rem",
+                                    color: "#64748b",
+                                    fontSize: "0.78rem",
+                                    fontFamily: "'Space Mono', monospace",
+                                }}
+                            >
+                                <span style={{ color: "#34d399" }}>→</span>
+                                Revisó y validó el diagrama para asegurar coherencia del proceso
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* Flujo de trabajo */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        viewport={{ once: true }}
+                        style={{
+                            marginTop: "2rem",
+                            background: "#0f172a",
+                            border: "1px solid rgba(167,139,250,0.15)",
+                            borderRadius: "1rem",
+                            padding: "1.5rem 2rem",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "1rem",
+                            flexWrap: "wrap",
+                        }}
+                    >
+                        <div
+                            style={{
+                                color: "#a78bfa",
+                                fontSize: "0.75rem",
+                                fontFamily: "'Space Mono', monospace",
+                                textTransform: "uppercase",
+                                letterSpacing: "0.08em",
+                                flexShrink: 0,
+                            }}
+                        >
+                            Flujo de trabajo
+                        </div>
+                        <div
+                            style={{
+                                display: "flex",
+                                alignItems: "center",
+                                gap: "0.75rem",
+                                flexWrap: "wrap",
+                                flex: 1,
+                            }}
+                        >
+                            {[
+                                { label: "Diseñar diagrama", tool: "bpmn.io", color: "#22d3ee" },
+                                { label: "→", tool: null, color: "#475569" },
+                                { label: "Exportar / compartir", tool: null, color: "#94a3b8" },
+                                { label: "→", tool: null, color: "#475569" },
+                                { label: "Analizar con IA", tool: "Gemini", color: "#34d399" },
+                                { label: "→", tool: null, color: "#475569" },
+                                { label: "Diagrama final validado", tool: null, color: "#e2e8f0" },
+                            ].map((step, i) =>
+                                step.tool === null && step.label === "→" ? (
+                                    <span key={i} style={{ color: step.color, fontSize: "1rem" }}>
+                                        {step.label}
+                                    </span>
+                                ) : (
+                                    <span
+                                        key={i}
+                                        style={{
+                                            color: step.color,
+                                            fontSize: "0.82rem",
+                                            fontFamily: "'Space Mono', monospace",
+                                        }}
+                                    >
+                                        {step.label}
+                                        {step.tool && (
+                                            <span
+                                                style={{
+                                                    marginLeft: "0.35rem",
+                                                    background: `${step.color}15`,
+                                                    border: `1px solid ${step.color}30`,
+                                                    borderRadius: "0.3rem",
+                                                    padding: "0.1rem 0.4rem",
+                                                    fontSize: "0.7rem",
+                                                }}
+                                            >
+                                                {step.tool}
+                                            </span>
+                                        )}
+                                    </span>
+                                )
+                            )}
+                        </div>
+                    </motion.div>
+                </div>
+            </section>
         </div>
     );
 };

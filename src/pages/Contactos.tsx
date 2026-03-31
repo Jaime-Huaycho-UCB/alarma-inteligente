@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Mail, Phone, User } from "lucide-react";
 
 import FOTO_FRANZ from '../assets/FOTO-FRANZ.jpeg';
-import FOTO_ANGELO from '../assets/FOTO_ANGELO.jpeg';
+import FOTO_JAIME from '../assets/FOTO_JAIME.jpeg';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // ✏️  EDITA AQUÍ los integrantes del proyecto
@@ -24,17 +24,10 @@ const INTEGRANTES: Integrante[] = [
         rol: "Integrante",
     },
     {
-        imagen: "/assets/integrante-2.jpg",
+        imagen: FOTO_JAIME,
         nombre: "JAIME IGNACIO HUAYCHO CLAVEL",
         correo: "jaime.huaycho@ucb.edu.bo",
         celular: "+591 64177602",
-        rol: "Integrante",
-    },
-    {
-        imagen: FOTO_ANGELO,
-        nombre: "Angelo Humerez",
-        correo: "correo@example.com",
-        celular: "+591 60000003",
         rol: "Integrante",
     },
 ];
