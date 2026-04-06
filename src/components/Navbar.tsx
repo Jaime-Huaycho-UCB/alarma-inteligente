@@ -62,6 +62,14 @@ const NAV_CONFIG: NavEntry[] = [
         ],
     },
 
+    {
+        type: "group",
+        label: "Datos",
+        items: [
+            { name: "NotebookLM", path: "/notebooklm", code: "20" },
+        ],
+    },
+
     { type: "item", name: "Contactos", path: "/contactos", code: "" },
 
     // Nuevo grupo de ejemplo:

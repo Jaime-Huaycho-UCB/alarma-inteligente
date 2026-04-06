@@ -25,6 +25,7 @@ import { BPMN } from "./pages/BPMN";
 import { CasoUso } from "./pages/CasoUso";
 import { Recursos } from "./pages/Recursos";
 import { DiagramaTecnologico } from "./pages/DiagramaTecnologico";
+import { NotebookLM } from "./pages/NotebookLM";
 
 export const App = () => {
   return (
@@ -50,6 +51,7 @@ export const App = () => {
             <Route path="/caso-uso" element={<CasoUso />} />
             <Route path="/recursos" element={<Recursos />} />
             <Route path="/diagrama-tecnologico" element={<DiagramaTecnologico />} />
+            <Route path="/notebooklm" element={<NotebookLM />} />
           </Routes>
         </main>
 
