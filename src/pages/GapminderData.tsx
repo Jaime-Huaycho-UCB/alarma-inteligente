@@ -6,12 +6,10 @@ import {
     ShieldAlert,
     Lightbulb,
     AlertCircle,
-    ArrowRight,
     ExternalLink,
     Activity,
     MapPin,
     Users,
-    Clock,
 } from "lucide-react";
 
 import gapminder1 from "../assets/gapminder_grafico1.png";

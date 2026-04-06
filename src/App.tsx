@@ -27,6 +27,7 @@ import { Recursos } from "./pages/Recursos";
 import { DiagramaTecnologico } from "./pages/DiagramaTecnologico";
 import { NotebookLM } from "./pages/NotebookLM";
 import { GapminderData } from "./pages/GapminderData";
+import { Tableau } from "./pages/Tableau";
 
 export const App = () => {
   return (
@@ -35,7 +36,7 @@ export const App = () => {
       <div className="flex flex-col min-h-screen">
         <Navbar />
 
-        <main className="flex-grow">
+        <main className="grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/la-pregunta" element={<LaPregunta />} />
@@ -54,6 +55,7 @@ export const App = () => {
             <Route path="/diagrama-tecnologico" element={<DiagramaTecnologico />} />
             <Route path="/notebooklm" element={<NotebookLM />} />
             <Route path="/gapminder" element={<GapminderData />} />
+            <Route path="/tableau" element={<Tableau />} />
           </Routes>
         </main>
 
