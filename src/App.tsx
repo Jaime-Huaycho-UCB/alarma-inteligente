@@ -28,6 +28,7 @@ import { DiagramaTecnologico } from "./pages/DiagramaTecnologico";
 import { NotebookLM } from "./pages/NotebookLM";
 import { GapminderData } from "./pages/GapminderData";
 import { Tableau } from "./pages/Tableau";
+import { Especificaciones } from "./pages/Especificaciones";
 
 export const App = () => {
   return (
@@ -56,6 +57,7 @@ export const App = () => {
             <Route path="/notebooklm" element={<NotebookLM />} />
             <Route path="/gapminder" element={<GapminderData />} />
             <Route path="/tableau" element={<Tableau />} />
+            <Route path="/especificaciones" element={<Especificaciones />} />
           </Routes>
         </main>
 
