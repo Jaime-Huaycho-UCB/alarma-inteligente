@@ -139,14 +139,6 @@ const TOTAL_NUESTRO_USD = (TOTAL_NUESTRO_BS / USD_A_BS).toFixed(0);
 const ANOS = [1, 2, 3];
 const MENSUALIDAD_PROTEL_BS = Math.round(40 * USD_A_BS);
 
-function costoAcumulado(empresa: typeof COMPETIDORES_COSTO[number], anos: number): number {
-    if (empresa.mensualidadUsd > 0) {
-        const mensualBs = Math.round(empresa.mensualidadUsd * USD_A_BS);
-        return mensualBs * 12 * anos; // sin instalación para simplificar
-    }
-    return empresa.costoMinBs ?? 0;
-}
-
 // ─── Componente ───────────────────────────────────────────────────────────────
 export const Costos = () => {
     const maxBarBs = 3000; // escala de la barra visual
