@@ -29,6 +29,7 @@ import { NotebookLM } from "./pages/NotebookLM";
 import { GapminderData } from "./pages/GapminderData";
 import { Tableau } from "./pages/Tableau";
 import { Especificaciones } from "./pages/Especificaciones";
+import { Costos } from "./pages/Costos";
 
 export const App = () => {
   return (
@@ -58,6 +59,7 @@ export const App = () => {
             <Route path="/gapminder" element={<GapminderData />} />
             <Route path="/tableau" element={<Tableau />} />
             <Route path="/especificaciones" element={<Especificaciones />} />
+            <Route path="/costos" element={<Costos />} />
           </Routes>
         </main>
 

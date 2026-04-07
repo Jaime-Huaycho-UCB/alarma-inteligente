@@ -70,6 +70,7 @@ const NAV_CONFIG: NavEntry[] = [
             { name: "Gapminder", path: "/gapminder", code: "21" },
             { name: "Tableau", path: "/tableau", code: "22" },
             { name: "Especificaciones", path: "/especificaciones", code: "23" },
+            { name: "Costos", path: "/costos", code: "24" },
         ],
     },
 
