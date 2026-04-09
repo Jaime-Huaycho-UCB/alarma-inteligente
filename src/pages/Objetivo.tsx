@@ -985,7 +985,7 @@ export const Objetivo = () => {
                                     color: "#22d3ee",
                                 },
                                 {
-                                    text: "Educativo: aplicación real de ingeniería electrónica",
+                                    text: "Educativo: aplicación real de Innovación, Desarrollo y Tecnología",
                                     color: "#34d399",
                                 },
                                 {

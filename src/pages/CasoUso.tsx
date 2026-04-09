@@ -574,9 +574,10 @@ export const CasoUso = () => {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
                         style={{
-                            fontSize: "3.5rem",
+                            fontSize: "clamp(2rem, 5vw, 3.4rem)",
                             fontWeight: 800,
                             margin: "0 0 1rem 0",
+                            lineHeight: 1.1,
                             background:
                                 "linear-gradient(135deg, #22d3ee 0%, #34d399 50%, #f59e0b 100%)",
                             WebkitBackgroundClip: "text",
@@ -1047,6 +1048,61 @@ export const CasoUso = () => {
                             </motion.div>
                         ))}
                     </div>
+                </motion.div>
+            </section>
+
+            {/* ── SIGUIENTE SECCIÓN ─────────────────────────────────────────────── */}
+            <section
+                style={{
+                    background: "#080f1f",
+                    borderTop: "1px solid #1e293b",
+                    padding: "5rem 2rem",
+                    textAlign: "center",
+                }}
+            >
+                <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                >
+                    <h2
+                        style={{
+                            fontSize: "1.5rem",
+                            fontWeight: 800,
+                            marginBottom: "1rem",
+                            color: "#e2e8f0",
+                        }}
+                    >
+                        Siguiente: Análisis de Recursos
+                    </h2>
+                    <p
+                        style={{
+                            color: "#64748b",
+                            maxWidth: 440,
+                            margin: "0 auto 2rem",
+                            fontSize: "0.9rem",
+                        }}
+                    >
+                        Con los casos de uso definidos, el siguiente paso es
+                        identificar los recursos necesarios para el proyecto.
+                    </p>
+                    <a
+                        href="/recursos"
+                        style={{
+                            display: "inline-block",
+                            padding: "0.85rem 2rem",
+                            background: "linear-gradient(135deg,#06b6d4,#0891b2)",
+                            color: "#fff",
+                            borderRadius: "0.5rem",
+                            fontWeight: 700,
+                            textDecoration: "none",
+                            fontSize: "0.9rem",
+                            boxShadow: "0 0 30px rgba(6,182,212,0.3)",
+                        }}
+                    >
+                        Ver Análisis de Recursos →
+                    </a>
                 </motion.div>
             </section>
         </div>

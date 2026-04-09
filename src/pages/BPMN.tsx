@@ -531,6 +531,7 @@ export const BPMN = () => {
           0% { transform: scale(1); opacity: 0.6; }
           100% { transform: scale(1.5); opacity: 0; }
         }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
       `}</style>
 
             {/* ── HERO ─────────────────────────────────────────────────────────── */}
@@ -625,22 +626,41 @@ export const BPMN = () => {
                         padding: "0 1.5rem",
                     }}
                 >
-                    <div
+                    <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
                         style={{
-                            fontSize: "0.75rem",
+                            display: "inline-flex",
+                            alignItems: "center",
+                            gap: "0.5rem",
+                            padding: "0.3rem 1rem",
+                            border: "1px solid rgba(34,211,238,0.3)",
+                            borderRadius: "9999px",
+                            marginBottom: "1.5rem",
                             fontFamily: "'Space Mono', monospace",
-                            color: "#22d3ee",
-                            letterSpacing: "0.15em",
-                            textTransform: "uppercase",
-                            marginBottom: "1rem",
-                            opacity: 0.8,
+                            fontSize: "0.72rem",
+                            color: "#67e8f9",
+                            background: "rgba(6,182,212,0.08)",
                         }}
                     >
-                        Notación Estándar de Procesos
-                    </div>
-                    <h1
+                        <span
+                            style={{
+                                display: "inline-block",
+                                width: 7,
+                                height: 7,
+                                borderRadius: "50%",
+                                background: "#22d3ee",
+                                animation: "blink 1.5s infinite",
+                            }}
+                        />
+                        ETAPA 11 — MODELO BPMN
+                    </motion.div>
+                    <motion.h1
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 }}
                         style={{
-                            fontSize: "3.5rem",
+                            fontSize: "clamp(2rem, 5vw, 3.4rem)",
                             fontWeight: 800,
                             lineHeight: 1.1,
                             marginBottom: "1rem",
@@ -652,7 +672,7 @@ export const BPMN = () => {
                         }}
                     >
                         BPMN 2.0
-                    </h1>
+                    </motion.h1>
                     <p
                         style={{
                             fontSize: "1.1rem",
@@ -2117,6 +2137,61 @@ export const BPMN = () => {
                         </div>
                     </motion.div>
                 </div>
+            </section>
+
+            {/* ── SIGUIENTE SECCIÓN ─────────────────────────────────────────────── */}
+            <section
+                style={{
+                    background: "#080f1f",
+                    borderTop: "1px solid #1e293b",
+                    padding: "5rem 2rem",
+                    textAlign: "center",
+                }}
+            >
+                <motion.div
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                >
+                    <h2
+                        style={{
+                            fontSize: "1.5rem",
+                            fontWeight: 800,
+                            marginBottom: "1rem",
+                            color: "#e2e8f0",
+                        }}
+                    >
+                        Siguiente: Caso de Uso
+                    </h2>
+                    <p
+                        style={{
+                            color: "#64748b",
+                            maxWidth: 440,
+                            margin: "0 auto 2rem",
+                            fontSize: "0.9rem",
+                        }}
+                    >
+                        Con el diagrama BPMN completo, el siguiente paso es
+                        analizar los actores del sistema con el Caso de Uso.
+                    </p>
+                    <a
+                        href="/caso-uso"
+                        style={{
+                            display: "inline-block",
+                            padding: "0.85rem 2rem",
+                            background: "linear-gradient(135deg,#06b6d4,#0891b2)",
+                            color: "#fff",
+                            borderRadius: "0.5rem",
+                            fontWeight: 700,
+                            textDecoration: "none",
+                            fontSize: "0.9rem",
+                            boxShadow: "0 0 30px rgba(6,182,212,0.3)",
+                        }}
+                    >
+                        Ver Caso de Uso →
+                    </a>
+                </motion.div>
             </section>
         </div>
     );

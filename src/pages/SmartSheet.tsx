@@ -1515,11 +1515,11 @@ export const SmartSheet = () => {
                             fontSize: "0.9rem",
                         }}
                     >
-                        Con el cronograma definido en Smartsheet, el siguiente
-                        paso es analizar el proyecto con el Modelo PART.
+                        Con el cronograma definido en Smartsheet, comenzamos
+                        la fase de análisis con el Modelo IDEF0.
                     </p>
                     <a
-                        href="/modelo-part"
+                        href="/modelo-idef0"
                         style={{
                             display: "inline-block",
                             padding: "0.85rem 2rem",
@@ -1533,7 +1533,7 @@ export const SmartSheet = () => {
                             boxShadow: "0 0 30px rgba(6,182,212,0.3)",
                         }}
                     >
-                        Ver Modelo PART →
+                        Ver Modelo IDEF0 →
                     </a>
                 </motion.div>
             </section>

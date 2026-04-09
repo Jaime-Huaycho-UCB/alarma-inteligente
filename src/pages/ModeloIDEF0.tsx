@@ -1566,11 +1566,11 @@ export const ModeloIDEF0 = () => {
                             fontSize: "0.9rem",
                         }}
                     >
-                        Descubre los integrantes que diseñaron y construyeron
-                        este sistema de alarma inteligente.
+                        Con el modelo IDEF0 completo, el siguiente paso es
+                        analizar el flujo del proceso con el diagrama BPMN.
                     </p>
                     <a
-                        href="/contactos"
+                        href="/bpmn"
                         style={{
                             display: "inline-block",
                             padding: "0.85rem 2rem",
@@ -1584,7 +1584,7 @@ export const ModeloIDEF0 = () => {
                             boxShadow: "0 0 30px rgba(6,182,212,0.3)",
                         }}
                     >
-                        Ver integrantes →
+                        Ver Modelo BPMN →
                     </a>
                 </motion.div>
             </section>

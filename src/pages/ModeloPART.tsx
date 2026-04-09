@@ -1074,10 +1074,10 @@ export const ModeloPART = () => {
                         }}
                     >
                         Con el modelo PART completo, el siguiente paso es
-                        definir objetivos SMART para el proyecto.
+                        revisar el cronograma del proyecto en Smartsheet.
                     </p>
                     <a
-                        href="/smart"
+                        href="/smartsheet"
                         style={{
                             display: "inline-block",
                             padding: "0.85rem 2rem",
@@ -1091,7 +1091,7 @@ export const ModeloPART = () => {
                             boxShadow: "0 0 30px rgba(6,182,212,0.3)",
                         }}
                     >
-                        Ver Modelo SMART →
+                        Ver Smartsheet →
                     </a>
                 </motion.div>
             </section>

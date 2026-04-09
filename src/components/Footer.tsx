@@ -524,7 +524,7 @@ export const Footer = () => {
                             color: "#334155",
                         }}
                     >
-                        Ingeniería Electrónica — 2024
+                        Innovación, Desarrollo y Tecnología — 2026
                     </div>
                 </div>
             </div>

@@ -33,7 +33,7 @@ const PREGUNTAS_SPECIFIC: PreguntaSpecific[] = [
     {
         pregunta: "¿Quién?",
         respuesta:
-            "El equipo de estudiantes de Ingeniería Electrónica que diseñará, programará y validará el sistema. El beneficiario final es el propietario del hogar que necesita seguridad asequible.",
+            "El equipo de estudiantes de Innovación, Desarrollo y Tecnología que diseñará, programará y validará el sistema. El beneficiario final es el propietario del hogar que necesita seguridad asequible.",
         color: "#34d399",
         icon: "👥",
     },
@@ -1657,7 +1657,7 @@ export const ModeloSMART = () => {
                             marginBottom: "1rem",
                         }}
                     >
-                        Explorar desde el inicio
+                        Siguiente: Modelo PART
                     </h2>
                     <p
                         style={{
@@ -1667,11 +1667,11 @@ export const ModeloSMART = () => {
                             fontSize: "0.9rem",
                         }}
                     >
-                        Has completado todas las etapas del proyecto. Vuelve al
-                        inicio para explorar el sistema completo.
+                        Con los objetivos SMART definidos, el siguiente paso es
+                        estructurar el proyecto con el Modelo PART.
                     </p>
                     <a
-                        href="/"
+                        href="/modelo-part"
                         style={{
                             display: "inline-block",
                             padding: "0.85rem 2rem",
@@ -1685,7 +1685,7 @@ export const ModeloSMART = () => {
                             boxShadow: "0 0 30px rgba(6,182,212,0.3)",
                         }}
                     >
-                        Volver al inicio →
+                        Ver Modelo PART →
                     </a>
                 </motion.div>
             </section>
