@@ -1078,7 +1078,7 @@ export const DiagramaTecnologico = () => {
                             fontSize: "0.9rem",
                         }}
                     >
-                        Con el análisis completo, el siguiente paso es explorar
+                        Con el diagrama completo, el siguiente paso es explorar
                         los datos y herramientas de investigación del proyecto.
                     </p>
                     <a

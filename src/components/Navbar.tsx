@@ -66,11 +66,12 @@ const NAV_CONFIG: NavEntry[] = [
         type: "group",
         label: "Datos",
         items: [
-            { name: "NotebookLM", path: "/notebooklm", code: "20" },
-            { name: "Gapminder", path: "/gapminder", code: "21" },
-            { name: "Tableau", path: "/tableau", code: "22" },
-            { name: "Especificaciones", path: "/especificaciones", code: "23" },
-            { name: "Costos", path: "/costos", code: "24" },
+            { name: "NotebookLM", path: "/notebooklm", code: "15" },
+            { name: "Gapminder", path: "/gapminder", code: "16" },
+            { name: "Tableau", path: "/tableau", code: "17" },
+            { name: "Especificaciones", path: "/especificaciones", code: "18" },
+            { name: "Costos", path: "/costos", code: "19" },
+            { name: "Maquetado", path: "/maquetado", code: "20" },
         ],
     },
 

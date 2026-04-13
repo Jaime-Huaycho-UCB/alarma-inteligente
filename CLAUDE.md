@@ -207,9 +207,40 @@ export default function MiPagina() {
 
 1. Crear `src/pages/NombrePagina.tsx`
 2. Añadir ruta en `App.tsx`
-3. Añadir entrada en `NAV_CONFIG` dentro de `Navbar.tsx`
+3. Añadir entrada en `NAV_CONFIG` dentro de `Navbar.tsx` con el código numérico siguiente al último
 4. Seguir el patrón de la página más similar (ver tabla de patrones)
 5. Usar los mismos `ACCENT_COLORS` rotativos
 6. Fuente `Syne` importada en `<style>` tag dentro del componente
 7. Todas las animaciones con `viewport={{ once: true }}`
 8. Sub-componentes internos al mismo archivo, no extraer
+9. **Actualizar el CTA de la página anterior** para que apunte a la nueva página (la que era el último paso ya no debe ser el final)
+10. La nueva página **no lleva CTA** al final hasta que se cree la siguiente (entonces se le agrega en ese momento)
+
+### Cadena de navegación CTA (orden actual)
+
+Cada página tiene al final una sección `/* ── SIGUIENTE SECCIÓN */` con un `<a href="...">` hacia la siguiente. El último de la lista no tiene CTA.
+
+```
+LluviaIdeas(01) → Ishikawa(02) → DefinicionProblema(03) → LaPregunta(04)
+→ Objetivo(05) → ModeloSMART(06) → ModeloPART(07) → SmartSheet(08)
+→ ModeloIDEF0(10) → BPMN(11) → CasoUso(12) → Recursos(13)
+→ DiagramaTecnologico(14) → NotebookLM(15) → Gapminder(16) → Tableau(17)
+→ Especificaciones(18) → Costos(19) → Maquetado(20) [SIN CTA — último]
+```
+
+### Plantilla CTA
+
+```tsx
+{/* ── SIGUIENTE SECCIÓN ─────────────────────────────────────────────── */}
+<section style={{ background: "#080f1f", borderTop: "1px solid #1e293b", padding: "5rem 2rem", textAlign: "center" }}>
+    <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
+        <h2 style={{ fontSize: "1.5rem", fontWeight: 800, marginBottom: "1rem", color: "#e2e8f0" }}>Título Siguiente</h2>
+        <p style={{ color: "#64748b", maxWidth: 440, margin: "0 auto 2rem", fontSize: "0.9rem" }}>
+            Descripción breve de la siguiente sección.
+        </p>
+        <a href="/ruta-siguiente" style={{ display: "inline-block", padding: "0.85rem 2rem", background: "linear-gradient(135deg,#06b6d4,#0891b2)", color: "#fff", borderRadius: "0.5rem", fontWeight: 700, textDecoration: "none", fontSize: "0.9rem", boxShadow: "0 0 30px rgba(6,182,212,0.3)" }}>
+            Ver Siguiente →
+        </a>
+    </motion.div>
+</section>
+```
