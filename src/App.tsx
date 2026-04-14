@@ -31,6 +31,7 @@ import { Tableau } from "./pages/Tableau";
 import { Especificaciones } from "./pages/Especificaciones";
 import { Costos } from "./pages/Costos";
 import { Maquetado } from "./pages/Maquetado";
+import { Weka } from "./pages/Weka";
 
 export const App = () => {
   return (
@@ -62,6 +63,7 @@ export const App = () => {
             <Route path="/especificaciones" element={<Especificaciones />} />
             <Route path="/costos" element={<Costos />} />
             <Route path="/maquetado" element={<Maquetado />} />
+            <Route path="/weka" element={<Weka />} />
           </Routes>
         </main>
 

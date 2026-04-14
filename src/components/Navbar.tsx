@@ -72,6 +72,7 @@ const NAV_CONFIG: NavEntry[] = [
             { name: "Especificaciones", path: "/especificaciones", code: "18" },
             { name: "Costos", path: "/costos", code: "19" },
             { name: "Maquetado", path: "/maquetado", code: "20" },
+            { name: "Weka", path: "/weka", code: "21" },
         ],
     },
 

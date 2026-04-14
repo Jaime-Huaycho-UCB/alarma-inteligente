@@ -225,7 +225,7 @@ LluviaIdeas(01) → Ishikawa(02) → DefinicionProblema(03) → LaPregunta(04)
 → Objetivo(05) → ModeloSMART(06) → ModeloPART(07) → SmartSheet(08)
 → ModeloIDEF0(10) → BPMN(11) → CasoUso(12) → Recursos(13)
 → DiagramaTecnologico(14) → NotebookLM(15) → Gapminder(16) → Tableau(17)
-→ Especificaciones(18) → Costos(19) → Maquetado(20) [SIN CTA — último]
+→ Especificaciones(18) → Costos(19) → Maquetado(20) → Weka(21) [SIN CTA — último]
 ```
 
 ### Plantilla CTA
