@@ -1,15 +1,12 @@
 import { motion } from "framer-motion";
 import {
-    Cpu,
     Wifi,
     Eye,
     Bell,
     Zap,
-    Cable,
     Layers,
     CircuitBoard,
     Wrench,
-    CheckCircle,
     ArrowRight,
 } from "lucide-react";
 
