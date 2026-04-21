@@ -444,6 +444,19 @@ export const Weka = () => {
                     </div>
                 </div>
             </section>
+
+            {/* ── SIGUIENTE SECCIÓN ─────────────────────────────────────────────── */}
+            <section style={{ background: "#080f1f", borderTop: "1px solid #1e293b", padding: "5rem 2rem", textAlign: "center" }}>
+                <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} viewport={{ once: true }}>
+                    <h2 style={{ fontSize: "1.5rem", fontWeight: 800, marginBottom: "1rem", color: "#e2e8f0" }}>Pitch Elevator</h2>
+                    <p style={{ color: "#64748b", maxWidth: 440, margin: "0 auto 2rem", fontSize: "0.9rem" }}>
+                        Mirá la presentación de 60 segundos que resume la propuesta de valor de la Alarma Inteligente.
+                    </p>
+                    <a href="/pitch-elevator" style={{ display: "inline-block", padding: "0.85rem 2rem", background: "linear-gradient(135deg,#06b6d4,#0891b2)", color: "#fff", borderRadius: "0.5rem", fontWeight: 700, textDecoration: "none", fontSize: "0.9rem", boxShadow: "0 0 30px rgba(6,182,212,0.3)" }}>
+                        Ver Pitch Elevator →
+                    </a>
+                </motion.div>
+            </section>
         </div>
     );
 };
