@@ -230,7 +230,7 @@ export const PitchElevator = () => {
                             {/* Línea top */}
                             <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 2, background: "linear-gradient(90deg,transparent,#22d3ee,transparent)", zIndex: 2 }} />
                             <iframe
-                                src="https://www.youtube.com/embed/_XQ9XZZIjZw"
+                                src="https://www.youtube.com/embed/L8nYa7nvfCI"
                                 title="Pitch Elevator — Alarma Inteligente"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                                 referrerPolicy="strict-origin-when-cross-origin"
