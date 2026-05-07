@@ -33,6 +33,7 @@ import { Costos } from "./pages/Costos";
 import { Maquetado } from "./pages/Maquetado";
 import { Weka } from "./pages/Weka";
 import { PitchElevator } from "./pages/PitchElevator";
+import { MaterialDifusion } from "./pages/MaterialDifusion";
 
 export const App = () => {
   return (
@@ -66,6 +67,7 @@ export const App = () => {
             <Route path="/maquetado" element={<Maquetado />} />
             <Route path="/weka" element={<Weka />} />
             <Route path="/pitch-elevator" element={<PitchElevator />} />
+            <Route path="/material-difusion" element={<MaterialDifusion />} />
           </Routes>
         </main>
 
