@@ -34,6 +34,7 @@ import { Maquetado } from "./pages/Maquetado";
 import { Weka } from "./pages/Weka";
 import { PitchElevator } from "./pages/PitchElevator";
 import { MaterialDifusion } from "./pages/MaterialDifusion";
+import { Scrum } from "./pages/Scrum";
 
 export const App = () => {
   return (
@@ -68,6 +69,7 @@ export const App = () => {
             <Route path="/weka" element={<Weka />} />
             <Route path="/pitch-elevator" element={<PitchElevator />} />
             <Route path="/material-difusion" element={<MaterialDifusion />} />
+            <Route path="/scrum" element={<Scrum />} />
           </Routes>
         </main>
 
