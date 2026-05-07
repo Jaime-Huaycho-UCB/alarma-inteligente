@@ -422,7 +422,7 @@ export const Home = () => {
     return (
         <div
             style={{
-                background: "#020617",
+                background: "#0f172a",
                 color: "#e2e8f0",
                 fontFamily: "'Syne', sans-serif",
                 overflowX: "hidden",
@@ -435,7 +435,7 @@ export const Home = () => {
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #020617; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
         ::-webkit-scrollbar-thumb { background: #06b6d4; border-radius: 3px; }
 
         .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
@@ -470,6 +470,8 @@ export const Home = () => {
           0%,100% { opacity: 1; }
           50% { opacity: 0; }
         }
+        @keyframes scan { 0%{top:0} 100%{top:100%} }
+        @keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
 
         .blink { animation: blink 1s infinite; }
       `}</style>
@@ -486,111 +488,28 @@ export const Home = () => {
                     overflow: "hidden",
                 }}
             >
+                {/* Parallax glows */}
+                <motion.div style={{ position: "absolute", inset: 0, y: heroY, zIndex: 0 }}>
+                    <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 30% 50%, rgba(34,211,238,0.07) 0%, transparent 60%)" }} />
+                    <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 60% 70% at 75% 40%, rgba(167,139,250,0.06) 0%, transparent 60%)" }} />
+                    <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 40% 50% at 50% 90%, rgba(52,211,153,0.04) 0%, transparent 60%)" }} />
+                </motion.div>
+
                 {/* Grid background */}
-                <div
-                    style={{
-                        position: "absolute",
-                        inset: 0,
-                        backgroundImage: `
-            linear-gradient(rgba(6,182,212,0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(6,182,212,0.03) 1px, transparent 1px)
-          `,
-                        backgroundSize: "60px 60px",
-                    }}
-                />
+                <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(34,211,238,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.035) 1px, transparent 1px)", backgroundSize: "64px 64px", zIndex: 0 }} />
 
-                {/* Radial glow */}
-                <div
-                    style={{
-                        position: "absolute",
-                        top: "50%",
-                        left: "50%",
-                        transform: "translate(-50%,-50%)",
-                        width: 800,
-                        height: 800,
-                        background:
-                            "radial-gradient(circle, rgba(6,182,212,0.08) 0%, transparent 70%)",
-                        borderRadius: "50%",
-                    }}
-                />
+                {/* Scan line */}
+                <div style={{ position: "absolute", left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, rgba(34,211,238,0.4), transparent)", animation: "scan 6s linear infinite", pointerEvents: "none", zIndex: 1 }} />
 
-                {/* Corner decorations */}
-                <div
-                    style={{
-                        position: "absolute",
-                        top: 40,
-                        left: 40,
-                        width: 60,
-                        height: 60,
-                        borderTop: "2px solid #22d3ee",
-                        borderLeft: "2px solid #22d3ee",
-                        opacity: 0.5,
-                    }}
-                />
-                <div
-                    style={{
-                        position: "absolute",
-                        top: 40,
-                        right: 40,
-                        width: 60,
-                        height: 60,
-                        borderTop: "2px solid #22d3ee",
-                        borderRight: "2px solid #22d3ee",
-                        opacity: 0.5,
-                    }}
-                />
-                <div
-                    style={{
-                        position: "absolute",
-                        bottom: 40,
-                        left: 40,
-                        width: 60,
-                        height: 60,
-                        borderBottom: "2px solid #22d3ee",
-                        borderLeft: "2px solid #22d3ee",
-                        opacity: 0.5,
-                    }}
-                />
-                <div
-                    style={{
-                        position: "absolute",
-                        bottom: 40,
-                        right: 40,
-                        width: 60,
-                        height: 60,
-                        borderBottom: "2px solid #22d3ee",
-                        borderRight: "2px solid #22d3ee",
-                        opacity: 0.5,
-                    }}
-                />
+                {/* Corner decorations — multicolor */}
+                <div style={{ position: "absolute", top: 32, left: 32, width: 60, height: 60, borderTop: "2px solid rgba(34,211,238,0.35)", borderLeft: "2px solid rgba(34,211,238,0.35)", zIndex: 1 }} />
+                <div style={{ position: "absolute", top: 32, right: 32, width: 60, height: 60, borderTop: "2px solid rgba(167,139,250,0.25)", borderRight: "2px solid rgba(167,139,250,0.25)", zIndex: 1 }} />
+                <div style={{ position: "absolute", bottom: 32, left: 32, width: 60, height: 60, borderBottom: "2px solid rgba(52,211,153,0.2)", borderLeft: "2px solid rgba(52,211,153,0.2)", zIndex: 1 }} />
+                <div style={{ position: "absolute", bottom: 32, right: 32, width: 60, height: 60, borderBottom: "2px solid rgba(34,211,238,0.2)", borderRight: "2px solid rgba(34,211,238,0.2)", zIndex: 1 }} />
 
                 {/* Floating orbs */}
-                <div
-                    style={{
-                        position: "absolute",
-                        top: "20%",
-                        left: "8%",
-                        width: 80,
-                        height: 80,
-                        borderRadius: "50%",
-                        background:
-                            "radial-gradient(circle, rgba(6,182,212,0.2), transparent)",
-                        animation: "float 6s ease-in-out infinite",
-                    }}
-                />
-                <div
-                    style={{
-                        position: "absolute",
-                        bottom: "25%",
-                        right: "10%",
-                        width: 50,
-                        height: 50,
-                        borderRadius: "50%",
-                        background:
-                            "radial-gradient(circle, rgba(6,182,212,0.15), transparent)",
-                        animation: "float 8s ease-in-out infinite 2s",
-                    }}
-                />
+                <div style={{ position: "absolute", top: "20%", left: "8%", width: 80, height: 80, borderRadius: "50%", background: "radial-gradient(circle, rgba(34,211,238,0.12), transparent)", animation: "float 6s ease-in-out infinite", zIndex: 0 }} />
+                <div style={{ position: "absolute", bottom: "25%", right: "10%", width: 50, height: 50, borderRadius: "50%", background: "radial-gradient(circle, rgba(167,139,250,0.1), transparent)", animation: "float 8s ease-in-out infinite 2s", zIndex: 0 }} />
 
                 <motion.div
                     style={{

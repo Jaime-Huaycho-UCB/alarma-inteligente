@@ -1,5 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Mail, Phone, User } from "lucide-react";
+import { useRef } from "react";
 
 import FOTO_FRANZ from '../assets/FOTO-FRANZ.jpeg';
 import FOTO_JAIME from '../assets/FOTO_JAIME.jpeg';
@@ -296,10 +297,14 @@ function IntegranteCard({ p, i }: { p: Integrante; i: number }) {
 
 // ─── Componente principal ─────────────────────────────────────────────────────
 export const Contactos = () => {
+    const heroRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+    const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
+
     return (
         <div
             style={{
-                background: "#020617",
+                background: "#0f172a",
                 color: "#e2e8f0",
                 fontFamily: "'Syne', sans-serif",
             }}
@@ -308,19 +313,24 @@ export const Contactos = () => {
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap');
         * { box-sizing: border-box; }
         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+        @keyframes scan { 0%{top:0} 100%{top:100%} }
+        @keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
       `}</style>
 
             {/* ── HERO ─────────────────────────────────────────────────────────── */}
             <section
+                ref={heroRef}
                 style={{
                     position: "relative",
-                    minHeight: 400,
+                    minHeight: "100vh",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     overflow: "hidden",
+                    background: "#0f172a",
                 }}
             >
+                {/* Foto de fondo tenue */}
                 <img
                     src={HERO_IMG}
                     alt="equipo"
@@ -330,70 +340,33 @@ export const Contactos = () => {
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
-                        filter: "brightness(0.15) saturate(0.4)",
-                    }}
-                />
-                <div
-                    style={{
-                        position: "absolute",
-                        inset: 0,
-                        background:
-                            "linear-gradient(to bottom, rgba(2,6,23,0.2), rgba(2,6,23,0.97))",
-                    }}
-                />
-                <div
-                    style={{
-                        position: "absolute",
-                        inset: 0,
-                        backgroundImage:
-                            "linear-gradient(rgba(34,211,238,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.04) 1px, transparent 1px)",
-                        backgroundSize: "50px 50px",
+                        filter: "brightness(0.08) saturate(0.3)",
+                        zIndex: 0,
                     }}
                 />
 
-                {/* Corners */}
-                {[
-                    {
-                        top: 32,
-                        left: 32,
-                        borderTop: "2px solid #22d3ee",
-                        borderLeft: "2px solid #22d3ee",
-                    },
-                    {
-                        top: 32,
-                        right: 32,
-                        borderTop: "2px solid #22d3ee",
-                        borderRight: "2px solid #22d3ee",
-                    },
-                    {
-                        bottom: 32,
-                        left: 32,
-                        borderBottom: "2px solid #22d3ee",
-                        borderLeft: "2px solid #22d3ee",
-                    },
-                    {
-                        bottom: 32,
-                        right: 32,
-                        borderBottom: "2px solid #22d3ee",
-                        borderRight: "2px solid #22d3ee",
-                    },
-                ].map((s, i) => (
-                    <div
-                        key={i}
-                        style={{
-                            position: "absolute",
-                            width: 48,
-                            height: 48,
-                            opacity: 0.4,
-                            ...s,
-                        }}
-                    />
-                ))}
+                {/* Parallax glows */}
+                <motion.div style={{ position: "absolute", inset: 0, y: heroY, zIndex: 1 }}>
+                    <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 70% 60% at 30% 50%, rgba(34,211,238,0.07) 0%, transparent 65%)" }} />
+                    <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 55% 65% at 75% 40%, rgba(167,139,250,0.06) 0%, transparent 60%)" }} />
+                </motion.div>
+
+                {/* Grid */}
+                <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(34,211,238,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.035) 1px, transparent 1px)", backgroundSize: "64px 64px", zIndex: 1 }} />
+
+                {/* Scan line */}
+                <div style={{ position: "absolute", left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, rgba(34,211,238,0.4), transparent)", animation: "scan 6s linear infinite", pointerEvents: "none", zIndex: 2 }} />
+
+                {/* Corners multicolor */}
+                <div style={{ position: "absolute", top: 32, left: 32, width: 56, height: 56, borderTop: "2px solid rgba(34,211,238,0.35)", borderLeft: "2px solid rgba(34,211,238,0.35)", zIndex: 2 }} />
+                <div style={{ position: "absolute", top: 32, right: 32, width: 56, height: 56, borderTop: "2px solid rgba(167,139,250,0.25)", borderRight: "2px solid rgba(167,139,250,0.25)", zIndex: 2 }} />
+                <div style={{ position: "absolute", bottom: 32, left: 32, width: 56, height: 56, borderBottom: "2px solid rgba(52,211,153,0.2)", borderLeft: "2px solid rgba(52,211,153,0.2)", zIndex: 2 }} />
+                <div style={{ position: "absolute", bottom: 32, right: 32, width: 56, height: 56, borderBottom: "2px solid rgba(34,211,238,0.2)", borderRight: "2px solid rgba(34,211,238,0.2)", zIndex: 2 }} />
 
                 <div
                     style={{
                         position: "relative",
-                        zIndex: 2,
+                        zIndex: 3,
                         textAlign: "center",
                         padding: "5rem 2rem 4rem",
                         maxWidth: 820,

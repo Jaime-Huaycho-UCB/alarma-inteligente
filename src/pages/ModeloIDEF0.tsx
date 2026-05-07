@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
     Box,
     ArrowRight,
@@ -9,7 +9,7 @@ import {
     Eye,
     ChevronDown,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // ✏️  EDITA AQUÍ — Ruta al archivo HTML principal de tu diagrama IDEF0
@@ -285,11 +285,14 @@ function IcomCard({ item, i }: { item: (typeof ICOM)[0]; i: number }) {
 // ─── Main ─────────────────────────────────────────────────────────────────────
 export const ModeloIDEF0 = () => {
     const [iframeLoaded, setIframeLoaded] = useState(false);
+    const heroRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+    const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
 
     return (
         <div
             style={{
-                background: "#020617",
+                background: "#0f172a",
                 color: "#e2e8f0",
                 fontFamily: "'Syne', sans-serif",
             }}
@@ -298,21 +301,29 @@ export const ModeloIDEF0 = () => {
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap');
         * { box-sizing: border-box; }
         @keyframes blink   { 0%,100%{opacity:1}  50%{opacity:0}   }
-        @keyframes scanline { 0%{transform:translateY(-100%)} 100%{transform:translateY(100vh)} }
+        @keyframes scan { 0%{top:0} 100%{top:100%} }
+        @keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
         @keyframes pulse-ring { 0%{transform:scale(1);opacity:0.6} 100%{transform:scale(2.2);opacity:0} }
       `}</style>
 
             {/* ── HERO ─────────────────────────────────────────────────────────── */}
             <section
+                ref={heroRef}
                 style={{
                     position: "relative",
-                    minHeight: 480,
+                    minHeight: "100vh",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
                     overflow: "hidden",
+                    background: "#0f172a",
                 }}
             >
+                {/* Parallax background */}
+                <motion.div style={{ position: "absolute", inset: 0, y: heroY, zIndex: 0 }}>
+                    <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 20% 50%, rgba(34,211,238,0.07) 0%, transparent 60%)" }} />
+                    <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 60% 70% at 80% 50%, rgba(167,139,250,0.06) 0%, transparent 60%)" }} />
+                </motion.div>
                 <img
                     src={IMGS.hero}
                     alt="hero"
@@ -322,7 +333,8 @@ export const ModeloIDEF0 = () => {
                         width: "100%",
                         height: "100%",
                         objectFit: "cover",
-                        filter: "brightness(0.14) saturate(0.5) hue-rotate(200deg)",
+                        filter: "brightness(0.1) saturate(0.4) hue-rotate(200deg)",
+                        zIndex: 0,
                     }}
                 />
                 <div
@@ -330,39 +342,19 @@ export const ModeloIDEF0 = () => {
                         position: "absolute",
                         inset: 0,
                         background:
-                            "linear-gradient(to bottom, rgba(2,6,23,0.2), rgba(2,6,23,0.98))",
+                            "linear-gradient(to bottom, rgba(15,23,42,0.2), rgba(15,23,42,0.9))",
+                        zIndex: 0,
                     }}
                 />
-                {/* Grid overlay */}
-                <div
-                    style={{
-                        position: "absolute",
-                        inset: 0,
-                        backgroundImage:
-                            "linear-gradient(rgba(34,211,238,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(34,211,238,0.04) 1px,transparent 1px)",
-                        backgroundSize: "50px 50px",
-                    }}
-                />
-                {/* Scanline effect */}
-                <div
-                    style={{
-                        position: "absolute",
-                        inset: 0,
-                        overflow: "hidden",
-                        pointerEvents: "none",
-                        zIndex: 1,
-                        opacity: 0.03,
-                    }}
-                >
-                    <div
-                        style={{
-                            width: "100%",
-                            height: 2,
-                            background: "#22d3ee",
-                            animation: "scanline 6s linear infinite",
-                        }}
-                    />
-                </div>
+                {/* Grid bg */}
+                <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(34,211,238,0.035) 1px, transparent 1px), linear-gradient(90deg, rgba(34,211,238,0.035) 1px, transparent 1px)", backgroundSize: "64px 64px", pointerEvents: "none", zIndex: 1 }} />
+                {/* Scan line */}
+                <div style={{ position: "absolute", left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, rgba(34,211,238,0.4), transparent)", animation: "scan 6s linear infinite", pointerEvents: "none", zIndex: 1 }} />
+                {/* Corner decorations */}
+                <div style={{ position: "absolute", top: 32, left: 32, width: 56, height: 56, borderTop: "2px solid rgba(34,211,238,0.35)", borderLeft: "2px solid rgba(34,211,238,0.35)", zIndex: 1 }} />
+                <div style={{ position: "absolute", top: 32, right: 32, width: 56, height: 56, borderTop: "2px solid rgba(167,139,250,0.25)", borderRight: "2px solid rgba(167,139,250,0.25)", zIndex: 1 }} />
+                <div style={{ position: "absolute", bottom: 32, left: 32, width: 56, height: 56, borderBottom: "2px solid rgba(52,211,153,0.2)", borderLeft: "2px solid rgba(52,211,153,0.2)", zIndex: 1 }} />
+                <div style={{ position: "absolute", bottom: 32, right: 32, width: 56, height: 56, borderBottom: "2px solid rgba(34,211,238,0.2)", borderRight: "2px solid rgba(34,211,238,0.2)", zIndex: 1 }} />
 
                 {/* IDEF0 decorative text */}
                 <div
@@ -384,44 +376,6 @@ export const ModeloIDEF0 = () => {
                     IDEF0
                 </div>
 
-                {/* Corners */}
-                {[
-                    {
-                        top: 32,
-                        left: 32,
-                        borderTop: "2px solid #22d3ee",
-                        borderLeft: "2px solid #22d3ee",
-                    },
-                    {
-                        top: 32,
-                        right: 32,
-                        borderTop: "2px solid #22d3ee",
-                        borderRight: "2px solid #22d3ee",
-                    },
-                    {
-                        bottom: 32,
-                        left: 32,
-                        borderBottom: "2px solid #22d3ee",
-                        borderLeft: "2px solid #22d3ee",
-                    },
-                    {
-                        bottom: 32,
-                        right: 32,
-                        borderBottom: "2px solid #22d3ee",
-                        borderRight: "2px solid #22d3ee",
-                    },
-                ].map((s, i) => (
-                    <div
-                        key={i}
-                        style={{
-                            position: "absolute",
-                            width: 48,
-                            height: 48,
-                            opacity: 0.4,
-                            ...s,
-                        }}
-                    />
-                ))}
 
                 <div
                     style={{

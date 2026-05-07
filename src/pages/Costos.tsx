@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import {
     DollarSign,
     TrendingDown,
@@ -142,29 +143,39 @@ const MENSUALIDAD_PROTEL_BS = Math.round(40 * USD_A_BS);
 // ─── Componente ───────────────────────────────────────────────────────────────
 export const Costos = () => {
     const maxBarBs = 3000; // escala de la barra visual
+    const heroRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+    const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
 
     return (
-        <div style={{ background: "#020617", color: "#e2e8f0", fontFamily: "'Syne', sans-serif" }}>
+        <div style={{ background: "#0f172a", color: "#e2e8f0", fontFamily: "'Syne', sans-serif" }}>
             <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap');
         * { box-sizing: border-box; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+        @keyframes scan { 0%{top:0} 100%{top:100%} }
+        @keyframes shimmer { 0%{background-position:-200% center} 100%{background-position:200% center} }
       `}</style>
 
             {/* ── HERO ──────────────────────────────────────────────────────────── */}
-            <section style={{ position: "relative", minHeight: 440, display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden" }}>
-                <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(52,211,153,0.12) 0%, rgba(2,6,23,1) 70%)" }} />
-                <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(52,211,153,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(52,211,153,0.04) 1px, transparent 1px)", backgroundSize: "48px 48px" }} />
-                <div style={{ position: "absolute", top: "20%", right: "8%", opacity: 0.05 }}>
+            <section ref={heroRef} style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center", justifyContent: "center", overflow: "hidden", background: "#0f172a" }}>
+                {/* Parallax background */}
+                <motion.div style={{ position: "absolute", inset: 0, y: heroY, zIndex: 0 }}>
+                    <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(52,211,153,0.08) 0%, transparent 70%)" }} />
+                    <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse 60% 70% at 80% 50%, rgba(167,139,250,0.06) 0%, transparent 60%)" }} />
+                </motion.div>
+                {/* Grid bg */}
+                <div style={{ position: "absolute", inset: 0, backgroundImage: "linear-gradient(rgba(52,211,153,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(52,211,153,0.03) 1px, transparent 1px)", backgroundSize: "64px 64px", pointerEvents: "none", zIndex: 1 }} />
+                {/* Scan line */}
+                <div style={{ position: "absolute", left: 0, right: 0, height: 1, background: "linear-gradient(90deg, transparent, rgba(52,211,153,0.4), transparent)", animation: "scan 6s linear infinite", pointerEvents: "none", zIndex: 1 }} />
+                {/* Corner decorations */}
+                <div style={{ position: "absolute", top: 32, left: 32, width: 56, height: 56, borderTop: "2px solid rgba(52,211,153,0.35)", borderLeft: "2px solid rgba(52,211,153,0.35)", zIndex: 1 }} />
+                <div style={{ position: "absolute", top: 32, right: 32, width: 56, height: 56, borderTop: "2px solid rgba(34,211,238,0.25)", borderRight: "2px solid rgba(34,211,238,0.25)", zIndex: 1 }} />
+                <div style={{ position: "absolute", bottom: 32, left: 32, width: 56, height: 56, borderBottom: "2px solid rgba(52,211,153,0.2)", borderLeft: "2px solid rgba(52,211,153,0.2)", zIndex: 1 }} />
+                <div style={{ position: "absolute", bottom: 32, right: 32, width: 56, height: 56, borderBottom: "2px solid rgba(34,211,238,0.2)", borderRight: "2px solid rgba(34,211,238,0.2)", zIndex: 1 }} />
+                <div style={{ position: "absolute", top: "20%", right: "8%", opacity: 0.04, zIndex: 1 }}>
                     <DollarSign size={280} color="#34d399" />
                 </div>
-                {[
-                    { top: 32, left: 32, borderTop: "2px solid #34d399", borderLeft: "2px solid #34d399" },
-                    { top: 32, right: 32, borderTop: "2px solid #34d399", borderRight: "2px solid #34d399" },
-                    { bottom: 32, left: 32, borderBottom: "2px solid #34d399", borderLeft: "2px solid #34d399" },
-                    { bottom: 32, right: 32, borderBottom: "2px solid #34d399", borderRight: "2px solid #34d399" },
-                ].map((s, i) => (
-                    <div key={i} style={{ position: "absolute", width: 48, height: 48, opacity: 0.35, ...s }} />
-                ))}
 
                 <div style={{ position: "relative", zIndex: 2, textAlign: "center", padding: "5rem 2rem 4rem", maxWidth: 860 }}>
                     <motion.div
